@@ -1,7 +1,7 @@
 
-export default function({Random, functions, soldOut}) {
+export default function({_, Random, functions, soldOut}) {
   const {getStockInfo} = functions;
-  return function(game) {
+  return function(game, playerId) {
     let chain;
     let attempts = 3;
     do {
