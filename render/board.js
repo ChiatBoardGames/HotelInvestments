@@ -1,15 +1,18 @@
 
-export default function ComponentFactory({Tiles, PlayArea, Container}) {
-  return function Component({game, playerId, state, runAction, canRunAction}) {
-    const myPlayer = game.players[playerId];
-    return <Container>
-      <TilesTable tiles={myPlayer.tiles} placeTile={canRunAction('placeTile') && placeTile} />
-      <PlayArea game={game} state={state} />
-    </Container>;
+import TilesTable from 'components/tiles';
+import PlayArea from 'components/play-area';
+import Container from 'core/components/container';
 
-    function placeTile(...tile) {
-      runAction('selectTile', {tile});
-    }
-  };
+export default function Board({game, playerId, state, runAction, canRunAction}) {
+  const myPlayer = game.players[playerId];
+  console.log('here', myPlayer);
+  return <Container>
+    <TilesTable tiles={myPlayer.tiles} placeTile={canRunAction('placeTile') && placeTile} />
+    <PlayArea game={game} state={state} />
+  </Container>;
+
+  function placeTile(...tile) {
+    runAction('selectTile', {tile});
+  }
 }
 

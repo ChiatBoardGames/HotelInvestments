@@ -1,8 +1,6 @@
 
-export default function() {
-  return function(game) {
-    return {
-      action: 'declareGameOver',
-    };
+export default function(game) {
+  return {
+    action: 'declareGameOver',
   };
 }
